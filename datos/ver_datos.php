@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+<link rel="stylesheet" type="text/css" href="./css/table.css">
+</head>
+<body>
+
 <?php
 function get_val ( $val )
 {
@@ -80,3 +88,5 @@ function imprime($query)
 }
 
 ?>
+</body>
+</html>

@@ -22,22 +22,24 @@ function update() {
 }
 var id_interval = setInterval('update()',1000);
 </script>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/table.css">
 </head>
 <body>
-<h3>Datos Grabados Arduino</h3>
+<h1>Datos Grabados Arduino</h1>
+<h3>Gráficas</h3>
 <a href="./graficas.html">Gráfica de Datos</a>
-<h3>Ver datos Arduino</h3>
+<h3>Ultimos 30 Datos Grabados en Servidor</h3>
+<div id="datos">
+</div> 
 <div id="formulario">
 <form action="ver_datos.php">
 <fieldset>
-    <legend> Numero Arduino:</legend>
-    <input type="number" min="1" max="99" step="1" name="sensor" value="arduino"><br><br>
+    <legend> Datos por Arduino</legend>
+    Número: <input type="number" min="1" max="99" step="1" name="sensor" value="arduino"><br><br>
     <input type="submit" value="Submit">
 </fieldset>
 </form>
 </div>
-<h3>Ultimos Datos Grabados</h3>
-<div id="datos">
-</div> 
 </body>
 </html>

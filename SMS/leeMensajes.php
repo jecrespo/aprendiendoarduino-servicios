@@ -17,7 +17,7 @@ if (!$conexion || !$seleccionar_bd) {
 $hoy = date ("Y-n-d H:i:s");
 $ayer = strtotime($hoy)-86400;
 $ayer = date("Y-n-d H:i:s",$ayer);
-$query = "SELECT date,arduino,dato FROM  Datos WHERE date > '$ayer' ORDER BY date DESC LIMIT 30";
+$query = "SELECT date,remoteNum,txtMsg,delivered FROM SMS WHERE date > '$ayer' ORDER BY date DESC LIMIT 50";
 	
 $result = mysql_query($query,$conexion);
 	

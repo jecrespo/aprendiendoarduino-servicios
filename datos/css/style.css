@@ -1,0 +1,24 @@
+@charset "UTF-8";
+body{
+	background-color: black;
+	color: white;
+}
+
+a:visited{
+	color:red;
+}
+
+a{
+	color:yellow;
+}
+
+div{
+	float:left;
+	width: 500px;
+	height: 280px;
+	margin: 10px;
+}
+
+.nueva_linea  {
+	clear:left;
+}
