@@ -24,18 +24,6 @@ GSM_SMS sms;
 // assign a MAC address for the ethernet controller.
 byte mac[] = {0x90, 0xA2, 0xDA, 0x0F, 0x70, 0xYY};	//Sustituir YY por el numero de MAC correcto
 
-byte ip[] = {
-  192, 168, 1, 10
-};
-byte DNS[] = {
-  8, 8, 8, 8
-};
-byte gateway[] = {
-  192, 168, 1, 1
-};
-byte subnet[] = {
-  255, 255, 255, 0
-};
 // Server to collect data
 char server[] = "www.aprendiendoarduino.com";
 
@@ -46,7 +34,16 @@ void setup() {
   // initialize serial communications and wait for port to open:
   Serial.begin(9600);
   delay(5000); // wait for serial port to connect. Needed for native USB port only
-  Ethernet.begin(mac, ip, DNS, gateway, subnet);
+  Serial.println("inicializando red...");
+  if (Ethernet.begin(mac) == 0) {
+    Serial.println("Failed to configure Ethernet using DHCP");
+    for (;;)
+      ;
+  }
+  else {
+    Serial.print("IP asignada por DHCP: ");
+    Serial.println(Ethernet.localIP());
+  }
 
   Serial.println("SMS Messages Sender");
 

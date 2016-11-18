@@ -1,17 +1,16 @@
 #include <Ethernet.h>
 #include <SPI.h>
 
-byte mac[] = {
-  0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED
-};
+byte mac[] = {0x90, 0xA2, 0xDA, 0x0F, 0x70, 0xYY};	//Sustituir YY por el numero de MAC correcto
+
 byte ip[] = {
-  10, 22, 72, 30
+  192, 168, 1, 10
 };
 byte DNS[] = {
   8, 8, 8, 8
 };
 byte gateway[] = {
-  10, 22, 72, 1
+  192, 168, 1, 1
 };
 byte subnet[] = {
   255, 255, 255, 0

@@ -5,18 +5,6 @@
 
 byte mac[] = {0x90, 0xA2, 0xDA, 0x0F, 0x70, 0xYY};	//Sustituir YY por el numero de MAC correcto
 
-byte ip[] = {
-  192, 168, 1, 10
-};
-byte DNS[] = {
-  8, 8, 8, 8
-};
-byte gateway[] = {
-  192, 168, 1, 1
-};
-byte subnet[] = {
-  255, 255, 255, 0
-};
 char url[] = "www.aprendiendoarduino.com";
 
 EthernetClient client;
@@ -26,8 +14,18 @@ String mensaje = "";
 
 void setup()
 {
-  Ethernet.begin(mac, ip, DNS, gateway, subnet);
+
   Serial.begin(9600);
+  Serial.println("inicializando red...");
+  if (Ethernet.begin(mac) == 0) {
+    Serial.println("Failed to configure Ethernet using DHCP");
+    for (;;)
+      ;
+  }
+  else {
+    Serial.print("IP asignada por DHCP: ");
+    Serial.println(Ethernet.localIP());
+  }
   delay(1000);
 }
 
