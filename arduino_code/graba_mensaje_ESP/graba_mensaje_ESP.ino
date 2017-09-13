@@ -66,7 +66,6 @@ void loop()
   do {
     char caracter_leido = Serial.read();
     if (caracter_leido == ' ') caracter_leido = '%20';
-    if (caracter_leido == '!') caracter_ledio = '%21';
     if (caracter_leido == '\r') continue;
     if (caracter_leido == '\n') continue;
     mensaje += caracter_leido;
