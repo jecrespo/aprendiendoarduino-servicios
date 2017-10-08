@@ -29,7 +29,7 @@
 		<?php
 		if ($handle = opendir('.')) {
 			while (false !== ($entry = readdir($handle))) {
-				if ($entry != "." && $entry != ".." && $entry != "index.php") {
+				if ($entry != "." && $entry != ".." && $entry != "index.php" && $entry != ".htaccess") {
 					echo "<tr>";
 					echo "<td><a href=\"".$entry."\">".$entry."</td>";	
 					echo "<td>".round(filesize($entry)/1000000)." MB</td>";
