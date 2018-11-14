@@ -20,7 +20,7 @@ if (!$conexion) {
 mysql_select_db("qvm602", $conexion);
 
 $hoy = date ("Y-n-d H:i:s");
-$ayer = strtotime($hoy)-7200;
+$ayer = strtotime($hoy)-12800;
 $ayer = date("Y-n-d H:i:s",$ayer);
 
 $result_t = mysql_query("SELECT * FROM Datos WHERE arduino=$arduino AND date BETWEEN '$ayer' AND '$hoy' ORDER BY date ASC");

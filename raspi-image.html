@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ejemplo Camara Raspberry Pi</title>
+<meta charset="utf-8">
+</head>
+
+<body>
+<h2>Imagen Raspberry Pi (auto-actualizable)</h2>
+<img  onload="setTimeout('Cam1Still()',10000)" id="Cam1"  src="http://www.aprendiendoarduino.com/servicios/imagen.jpg" width="720" height="480" alt="No Image? Refresh in progress." title="Imagen Raspberry Pi"  />
+<script type="text/javascript">
+function Cam1Still() {
+   if (!document.images) return;
+   document.getElementById('Cam1').src = 'http://www.aprendiendoarduino.com/servicios/imagen.jpg?' + Math.random();
+   setTimeout('Cam1Still()',10000);   /*time in milliseconds... same as in 'onload'*/
+}
+</script>
+</body>
+</html>
