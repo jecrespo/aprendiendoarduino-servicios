@@ -1,7 +1,7 @@
 #include <ESP8266WiFi.h>
 #include "Timer.h"
 
-#define NUM_ARDUINO 21	//Sustituir X por el numero de Arduino correcto
+#define NUM_ARDUINO X	//Sustituir X por el numero de Arduino correcto
 
 const char* ssid     = "ssid";
 const char* password = "password";
