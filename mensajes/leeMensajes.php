@@ -1,38 +1,41 @@
 <?php
 //Crear conexión a la Base de Datos
-$conexion = mysql_connect("qvm602.aprendiendoarduino.com","qvm602","password");
-if (!$conexion){
-	die("Fallo la conexión a la Base de Datos: " . mysql_error());
-}
-// Seleccionar la Base de Datos a utilizar
-$seleccionar_bd = mysql_select_db("qvm602", $conexion);
-if (!$seleccionar_bd) {
-	die("Fallo la selección de la Base de Datos: " . mysql_error());
-}
-// compruebo que la conexion es corecta
-if (!$conexion || !$seleccionar_bd) {
-	die('Fallo la conexión o la selección de la Base de Datos: ');
+$conexion = mysqli_connect("qvm602.aprendiendoarduino.com","qvm602","password","qvm602");
+
+if (!$conexion) {
+    echo "Error: No se pudo conectar a MySQL." . PHP_EOL;
+    echo "errno de depuración: " . mysqli_connect_errno() . PHP_EOL;
+    echo "error de depuración: " . mysqli_connect_error() . PHP_EOL;
+    exit;
 }
 
 $hoy = date ("Y-n-d H:i:s");
 $ayer = strtotime($hoy)-86400;
 $ayer = date("Y-n-d H:i:s",$ayer);
 $query = "SELECT date,nombre,mensaje FROM  Mensajes WHERE date > '$ayer' ORDER BY date DESC LIMIT 20";
-	
-$result = mysql_query($query,$conexion);
-	
-if (!$result) {
-	die("Fallo en la consulta: " . mysql_error());
+
+if (!$resultado = $conexion->query($query)) {
+    // ¡Oh, no! La consulta falló. 
+    echo "Lo sentimos, este sitio web está experimentando problemas.";
+
+    // De nuevo, no hacer esto en un sitio público, aunque nosotros mostraremos
+    // cómo obtener información del error
+    echo "Error: La ejecución de la consulta falló debido a: \n";
+    echo "Query: " . $sql . "\n";
+    echo "Errno: " . $mysqli->errno . "\n";
+    echo "Error: " . $mysqli->error . "\n";
+    exit;
 }
+
 // Pinto los campos de la consulta
 echo "<table border='2'>";
 echo "<tr>";
-while ($campo = mysql_fetch_field($result)){
+while ($campo = mysqli_fetch_field($resultado )){
 	echo ("<td> <b> $campo->name </b> </td>");
 }
 echo "</tr>";
 // recorro todas las filas y saco el NI y el comentario
-while ($row = mysql_fetch_array($result,MYSQL_ASSOC)) {
+while ($row = mysqli_fetch_array($resultado ,MYSQLI_ASSOC)) {
 	echo "<tr>";
 	foreach ($row as $item){
 		echo ("<td>$item</td>");
@@ -40,5 +43,5 @@ while ($row = mysql_fetch_array($result,MYSQL_ASSOC)) {
 	echo "</tr>";
 }
 echo "</table>";
-mysql_close($conexion);	
+$conexion ->close();	
 ?>
